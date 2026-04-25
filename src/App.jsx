@@ -1,6 +1,24 @@
+import { useState } from 'react'
 import { FaTelegram, FaYoutube, FaFacebook, FaWallet } from 'react-icons/fa'
 
 export default function App() {
+  const [wallet, setWallet] = useState("")
+
+  async function connectWallet() {
+    if (window.ethereum) {
+      const accounts = await window.ethereum.request({
+        method: 'eth_requestAccounts'
+      })
+      setWallet(accounts[0])
+    } else {
+      alert("Please install MetaMask")
+    }
+  }
+
+  function buyALF() {
+    alert("Buy ALF Token feature coming next")
+  }
+
   return (
     <div className="container">
       <h1>🚀 ALF TOKEN</h1>
@@ -25,8 +43,13 @@ export default function App() {
         <button><FaFacebook /> Facebook</button>
       </a>
 
-      <button><FaWallet /> Connect Wallet</button>
-      <button>💰 Buy ALF Token</button>
+      <button onClick={connectWallet}>
+        <FaWallet /> {wallet ? wallet.slice(0,6) + "..." : "Connect Wallet"}
+      </button>
+
+      <button onClick={buyALF}>
+        💰 Buy ALF Token
+      </button>
     </div>
   )
 }

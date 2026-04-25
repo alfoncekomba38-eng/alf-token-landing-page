@@ -31,17 +31,9 @@ export default function App() {
 
       <div className="countdown">⏳ 7 Days Remaining</div>
 
-      <a href="https://t.me/Alfonce4">
-        <button><FaTelegram /> Telegram</button>
-      </a>
-
-      <a href="https://www.youtube.com/@alfoncekomba6874">
-        <button><FaYoutube /> YouTube</button>
-      </a>
-
-      <a href="https://www.facebook.com/share/1LGmZ2hgiH/">
-        <button><FaFacebook /> Facebook</button>
-      </a>
+      <a href="https://t.me/Alfonce4"><button><FaTelegram /> Telegram</button></a>
+      <a href="https://www.youtube.com/@alfoncekomba6874"><button><FaYoutube /> YouTube</button></a>
+      <a href="https://www.facebook.com/share/1LGmZ2hgiH/"><button><FaFacebook /> Facebook</button></a>
 
       <button onClick={connectWallet}>
         <FaWallet /> {wallet ? wallet.slice(0,6) + "..." : "Connect Wallet"}

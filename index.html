@@ -1,12 +1,100 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ALF Token</title>
-    <script type="module" src="/src/main.jsx"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ALF Token</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b0f1a;
+  color:white;
+  text-align:center;
+}
+.container{padding:20px;}
+.card{
+  background:#111827;
+  padding:20px;
+  margin:15px auto;
+  border-radius:15px;
+  max-width:500px;
+  box-shadow:0 0 15px rgba(0,255,255,0.1);
+}
+button{
+  padding:12px 18px;
+  border:none;
+  border-radius:10px;
+  margin:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+.buy{background:#facc15;}
+.copy{background:#22c55e;}
+.link{background:#3b82f6;color:white;}
+img{width:100%;border-radius:12px;}
+.small{font-size:12px;color:#9ca3af;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🚀 ALF TOKEN</h1>
+<p class="small">The Future of Decentralized Finance</p>
+
+<div class="card">
+  <img src="YOUR_POSTER_IMAGE_URL" />
+</div>
+
+<div class="card">
+  <h3>🪙 Contract Address</h3>
+  <p id="contract">0xYourALFTokenContractHere</p>
+  <button class="copy" onclick="copy()">Copy Address</button>
+</div>
+
+<div class="card">
+  <h3>💱 Buy ALF Token</h3>
+  <a href="https://pancakeswap.finance" target="_blank">
+    <button class="buy">Buy on PancakeSwap</button>
+  </a>
+  <p class="small">Powered by PancakeSwap</p>
+</div>
+
+<div class="card">
+  <h3>📊 Live Chart</h3>
+  <a href="https://dexscreener.com" target="_blank">
+    <button class="link">View Chart</button>
+  </a>
+  <p class="small">Powered by DexScreener</p>
+</div>
+
+<div class="card">
+  <h3>🌐 Community</h3>
+
+  <a href="https://t.me/yourtelegram">
+    <button class="link">Telegram</button>
+  </a>
+
+  <a href="https://youtube.com/@yourchannel">
+    <button class="link">YouTube</button>
+  </a>
+
+  <a href="https://facebook.com/yourpage">
+    <button class="link">Facebook</button>
+  </a>
+</div>
+
+</div>
+
+<script>
+function copy(){
+  navigator.clipboard.writeText(document.getElementById("contract").innerText);
+  alert("Contract Copied!");
+}
+</script>
+
+</body>
 </html>

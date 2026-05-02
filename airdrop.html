@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALF Airdrop</title>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+
+<style>
+body{
+  background:#0b0f1a;
+  color:white;
+  text-align:center;
+  font-family:Arial;
+}
+.card{
+  background:#111827;
+  padding:20px;
+  margin:20px auto;
+  max-width:400px;
+  border-radius:15px;
+}
+button{
+  padding:12px;
+  margin:10px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+.claim{background:#22c55e;}
+.connect{background:#3b82f6;color:white;}
+.copy{background:#facc15;}
+input{
+  width:90%;
+  padding:10px;
+  border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎁 ALF AIRDROP</h1>
+
+<div class="card">
+
+<button class="connect" onclick="connectWallet()">Connect Wallet</button>
+<p id="wallet"></p>
+
+<h3>Your Referral Link</h3>
+<input id="refLink" readonly>
+<button class="copy" onclick="copyRef()">Copy Link</button>
+
+<button class="claim" onclick="claim()">Claim Airdrop</button>
+
+<p id="status"></p>
+
+</div>
+
+<script>
+let userAddress = "";
+let ref = "";
+
+function getRef(){
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("ref");
+}
+
+async function connectWallet(){
+  if(!window.ethereum){
+    alert("Install MetaMask");
+    return;
+  }
+
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  await provider.send("eth_requestAccounts", []);
+  const signer = provider.getSigner();
+  userAddress = await signer.getAddress();
+
+  document.getElementById("wallet").innerText = userAddress;
+
+  // Generate referral link
+  const link = window.location.origin + "?ref=" + userAddress;
+  document.getElementById("refLink").value = link;
+
+  ref = getRef();
+}
+
+function copyRef(){
+  navigator.clipboard.writeText(document.getElementById("refLink").value);
+  alert("Referral link copied!");
+}
+
+async function claim(){
+  if(!userAddress){
+    alert("Connect wallet first");
+    return;
+  }
+
+  if(ref){
+    document.getElementById("status").innerText =
+      "Claimed with referral: " + ref;
+  } else {
+    document.getElementById("status").innerText =
+      "Claimed without referral";
+  }
+
+  alert("Airdrop claimed (Demo)");
+
+  // 🔥 REAL CONTRACT CALL (UNCOMMENT)
+  /*
+  const contractAddress = "0xYourAirdropContract";
+  const abi = ["function claim(address referrer) public"];
+
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+  const contract = new ethers.Contract(contractAddress, abi, signer);
+
+  const tx = await contract.claim(ref || ethers.constants.AddressZero);
+  await tx.wait();
+
+  alert("Success!");
+  */
+}
+</script>
+
+</body>
+</html>

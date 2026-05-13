@@ -1,0 +1,49 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#C69214"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="#0B0F19" stroke="url(#gold)" stroke-width="18"/>
+
+  <!-- Outer Ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#D4AF37" stroke-width="4" opacity="0.8"/>
+
+  <!-- ALFP Text -->
+  <text x="256" y="300"
+        text-anchor="middle"
+        font-size="78"
+        font-family="Arial"
+        font-weight="bold"
+        fill="url(#gold)">
+    ALFP
+  </text>
+
+  <!-- Subtitle -->
+  <text x="256" y="345"
+        text-anchor="middle"
+        font-size="26"
+        font-family="Arial"
+        fill="#FFFFFF">
+    ALFPAY TOKEN
+  </text>
+
+  <!-- AP Symbol -->
+  <text x="256" y="200"
+        text-anchor="middle"
+        font-size="140"
+        font-family="Arial"
+        font-weight="bold"
+        fill="url(#gold)">
+    AP
+  </text>
+
+  <!-- Decorative Line -->
+  <ellipse cx="256" cy="210" rx="150" ry="55"
+           stroke="url(#gold)"
+           stroke-width="10"
+           fill="none"/>
+</svg>
